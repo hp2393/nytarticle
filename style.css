@@ -1,0 +1,36 @@
+body {
+    padding: 0px 50px;
+}
+
+#search-parameters-forms, #articles-location {
+    padding: 10px;
+
+    background-color: white;
+}
+
+.jumbotron {
+    margin: 0, 10px, 0, 10px;
+
+    background-color: navy;
+}
+
+.container-div {
+    margin: 10px 0;
+    padding: 0;
+
+    width: 100%;
+
+    background-color: navy;
+
+    border-color: navy;
+    border-width: 1px;
+    border-style: solid;
+}
+
+.container-header {
+    padding: 10px;
+
+    color: white;
+    font-size: 16px;
+    font-weight: bold;
+}
