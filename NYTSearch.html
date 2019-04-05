@@ -33,11 +33,11 @@
             <div class="form-group">
             <label for="number-records">Number of Records to Retrieve:</label>
             <select class="custom-select" id="number-records">
-                <option>1</option>
-                <option>2</option>
-                <option>3</option>
-                <option>4</option>
-                <option>5</option>
+                <option value= "1">1</option>
+                <option value= "2">2</option>
+                <option value= "3">3</option>
+                <option value= "4">4</option>
+                <option value= "5">5</option>
             </select>
             </div>
 
@@ -67,6 +67,45 @@
         </form>
 
     </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script type="text/javascript">
+    
+    var search = $("#search-input").val().trim();
+    var queryURL = "https://api.nytimes.com/svc/search/v2/articlesearch.json?q=election&api-key=RWWZ8VTgJjkOMALXSPvImeafBajoUGem";
+
+    console.log($("#number-records").val());
+
+    $.ajax({
+          url: queryURL,
+          method: "GET"
+        }).then(function(response) {
+            console.log(response)
+
+            var result = response.response;
+            for(var i=0; i<$("#number-records").val(); i++){
+            
+            var articleDiv = $("<div>");
+
+            $(articleDiv).append("<p id='article-title'>"+ result.docs[i].headline.print_headline + "</p>");
+            $(articleDiv).append("<p id='article-author'>"+ result.docs[i].byline.original + "</p>");
+            $(articleDiv).append("<p id='article-section'>"+ result.docs[i].section_name + "</p>");
+            $(articleDiv).append("<p id='article-date'>"+ result.docs[i].pub_date + "</p>");
+            $(articleDiv).append("<p id='article-link'>"+ result.docs[i].web_url + "</p>");
+            
+            $("#articles-location").append(articleDiv);
+            
+            
+            }
+
+
+        });
+
+
+
+    
+    
+    
+    </script>
 
  
 </body>
